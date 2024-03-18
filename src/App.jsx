@@ -1,5 +1,12 @@
 import "./App.css";
-import { FormControl, InputGroup, Container, Button } from "react-bootstrap";
+import {
+  FormControl,
+  InputGroup,
+  Container,
+  Button,
+  Row,
+  Card,
+} from "react-bootstrap";
 import { useState, useEffect } from "react";
 
 const clientId = import.meta.env.VITE_CLIENT_ID;
@@ -91,6 +98,69 @@ function App() {
 
           <Button onClick={search}>Search</Button>
         </InputGroup>
+      </Container>
+
+      <Container>
+        <Row
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "space-around",
+            alignContent: "center",
+          }}
+        >
+          {albums.map((album) => {
+            return (
+              <Card
+                key={album.id}
+                style={{
+                  backgroundColor: "white",
+                  margin: "10px",
+                  borderRadius: "5px",
+                  marginBottom: "30px",
+                }}
+              >
+                <Card.Img
+                  width={200}
+                  src={album.images[0].url}
+                  style={{ borderRadius: "4%" }}
+                />
+                <Card.Body>
+                  <Card.Title
+                    style={{
+                      whiteSpace: "wrap",
+                      fontWeight: "bold",
+                      maxWidth: "200px",
+                      fontSize: "18px",
+                      marginTop: "10px",
+                      color: "black",
+                    }}
+                  >
+                    {album.name}
+                  </Card.Title>
+                  <Card.Text style={{ color: "black" }}>
+                    Release Date: <br />
+                    {album.release_date}
+                  </Card.Text>
+                  <Button
+                    href={album.external_urls.spotify}
+                    style={{
+                      background: "black",
+                      color: "white",
+                      fontWeight: "bold",
+                      fontSize: "15px",
+                      borderRadius: "5px",
+                      padding: "10px",
+                    }}
+                  >
+                    View Album
+                  </Button>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </Row>
       </Container>
     </>
   );
