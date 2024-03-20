@@ -1,4 +1,5 @@
 import "./App.css";
+import imgStar from "/svg/star.png";
 import {
   FormControl,
   InputGroup,
@@ -55,9 +56,6 @@ function App() {
         return data.artists.items[0].id;
       });
 
-    console.log("Search Input: " + searchInput);
-    console.log("Artist ID: " + artistID);
-
     //Get Artist Albums
     await fetch(
       "https://api.spotify.com/v1/artists/" +
@@ -74,9 +72,22 @@ function App() {
   return (
     <>
       <Container>
+        {/* <h1 style={{ fontFamily: "Bungee Shade", fontSize: "30px" }}> */}
+        <h1
+          style={{
+            fontSize: "72px",
+            fontFamily: "NormandyBeach",
+            color: "black",
+          }}
+        >
+          Discover your
+          <br />
+          {/* <img src={imgStar} alt="image of star" width={40} height={50} /> */}
+          🎶 favourite soundtracks 🎶
+        </h1>
         <InputGroup>
           <FormControl
-            placeholder="Search For Artist"
+            placeholder="Search an Artist"
             type="input"
             aria-label="Search for an Artist"
             onKeyDown={(event) => {
@@ -86,23 +97,36 @@ function App() {
             }}
             onChange={(event) => setSearchInput(event.target.value)}
             style={{
+              fontFamily: "Montserrat",
               width: "300px",
               height: "35px",
-              borderWidth: "0px",
-              borderStyle: "solid",
+              border: "2px solid black",
               borderRadius: "5px",
               marginRight: "10px",
               paddingLeft: "10px",
             }}
           />
 
-          <Button onClick={search}>Search</Button>
+          <Button
+            className="search-button"
+            style={{
+              fontFamily: "Montserrat",
+              background: "#e4e18d",
+              padding: "8px 22px",
+              borderRadius: "3px",
+              boxShadow: "4px 4px black", // Solid line box shadow
+            }}
+            onClick={search}
+          >
+            Discover
+          </Button>
         </InputGroup>
       </Container>
 
       <Container>
         <Row
           style={{
+            fontFamily: "Montserrat",
             display: "flex",
             flexDirection: "row",
             flexWrap: "wrap",
@@ -115,9 +139,11 @@ function App() {
               <Card
                 key={album.id}
                 style={{
-                  backgroundColor: "white",
-                  margin: "10px",
+                  // backgroundColor: "white",
+                  margin: "40px 0px",
+                  border: "2px solid black",
                   borderRadius: "5px",
+                  boxShadow: "4px 4px black", // Solid line box shadow
                   marginBottom: "30px",
                 }}
               >
@@ -134,25 +160,29 @@ function App() {
                       maxWidth: "200px",
                       fontSize: "18px",
                       marginTop: "10px",
-                      color: "black",
+                      color: "#282818",
                     }}
                   >
                     {album.name}
                   </Card.Title>
-                  <Card.Text style={{ color: "black" }}>
+                  <Card.Text style={{ color: "#282818" }}>
                     Release Date: <br />
                     {album.release_date}
                   </Card.Text>
                   <Button
+                    className="view-album-button"
                     href={album.external_urls.spotify}
                     style={{
-                      background: "black",
-                      color: "white",
-                      fontWeight: "bold",
+                      backgroundColor: "#c4d8d1",
+                      borderRadius: "3px",
+                      color: "#282818",
                       fontSize: "15px",
-                      borderRadius: "5px",
-                      padding: "10px",
+                      fontWeight: "bold",
+                      padding: "10px 20px",
+                      border: "1px solid black",
+                      boxShadow: "4px 4px black", // Solid line box shadow
                     }}
+                    target="_blank"
                   >
                     View Album
                   </Button>
