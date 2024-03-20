@@ -1,4 +1,5 @@
 :root {
+  background: #EDB74D;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -16,6 +17,8 @@ a {
 
 
 body {
+  /* background-color: #EDB74D; */
+  /* background-color: #f8c864; */
   margin: 0;
   display: flex;
   place-items: center;
@@ -48,7 +51,6 @@ button:hover {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #f8f8eb;
   }
 
 }

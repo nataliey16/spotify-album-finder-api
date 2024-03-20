@@ -71,6 +71,17 @@ function App() {
 
   return (
     <>
+      {/* <svg>
+        <filter id="grainy">
+          <feTurbulence type="turbulence" baseFrequency="0.7" />
+        </filter>
+      </svg> */}
+
+      {/* <div className="blob-cont">
+        <div className="yellow blob"></div>
+        <div className="red blob"></div>
+        <div className="green blob"></div>
+      </div> */}
       <Container>
         {/* <h1 style={{ fontFamily: "Bungee Shade", fontSize: "30px" }}> */}
         <h1
@@ -112,6 +123,7 @@ function App() {
             style={{
               fontFamily: "Montserrat",
               background: "#e4e18d",
+              // background: "#ef6d4f",
               padding: "8px 22px",
               borderRadius: "3px",
               boxShadow: "4px 4px black", // Solid line box shadow
@@ -192,6 +204,24 @@ function App() {
           })}
         </Row>
       </Container>
+
+      <svg>
+        <filter id="noiseFilter">
+          <feTurbulence
+            type="fractalNoise"
+            baseFrequency="0.4"
+            numOctaves="3"
+            stitchTiles="stitch"
+          />
+          <feColorMatrix
+            in="colorNoise"
+            type="matrix"
+            values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0"
+          />
+          <feComposite operator="in" in2="SourceGraphic" result="monoNoise" />
+          <feBlend in="SourceGraphic" in2="monoNoise" mode="screen" />
+        </filter>
+      </svg>
     </>
   );
 }
