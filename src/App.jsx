@@ -71,29 +71,21 @@ function App() {
 
   return (
     <>
-      {/* <svg>
-        <filter id="grainy">
-          <feTurbulence type="turbulence" baseFrequency="0.7" />
-        </filter>
-      </svg> */}
-
-      {/* <div className="blob-cont">
+      <div className="blob-cont">
         <div className="yellow blob"></div>
         <div className="red blob"></div>
         <div className="green blob"></div>
-      </div> */}
+      </div>
       <Container>
-        {/* <h1 style={{ fontFamily: "Bungee Shade", fontSize: "30px" }}> */}
         <h1
           style={{
             fontSize: "72px",
             fontFamily: "NormandyBeach",
-            color: "black",
+            color: "#402a32",
           }}
         >
           Discover your
           <br />
-          {/* <img src={imgStar} alt="image of star" width={40} height={50} /> */}
           🎶 favourite soundtracks 🎶
         </h1>
         <InputGroup>
@@ -122,8 +114,7 @@ function App() {
             className="search-button"
             style={{
               fontFamily: "Montserrat",
-              background: "#e4e18d",
-              // background: "#ef6d4f",
+              // background: "#e4e18d",
               padding: "8px 22px",
               borderRadius: "3px",
               boxShadow: "4px 4px black", // Solid line box shadow
@@ -134,7 +125,7 @@ function App() {
           </Button>
         </InputGroup>
       </Container>
-
+      <img src={imgStar} alt="image of star" width={30} height={50} />
       <Container>
         <Row
           style={{
@@ -157,6 +148,9 @@ function App() {
                   borderRadius: "5px",
                   boxShadow: "4px 4px black", // Solid line box shadow
                   marginBottom: "30px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
                 }}
               >
                 <Card.Img
@@ -185,7 +179,7 @@ function App() {
                     className="view-album-button"
                     href={album.external_urls.spotify}
                     style={{
-                      backgroundColor: "#c4d8d1",
+                      // backgroundColor: "#c4d8d1",
                       borderRadius: "3px",
                       color: "#282818",
                       fontSize: "15px",
@@ -204,12 +198,13 @@ function App() {
           })}
         </Row>
       </Container>
+      <img src={imgStar} alt="image of star" width={40} height={50} />
 
       <svg>
         <filter id="noiseFilter">
           <feTurbulence
             type="fractalNoise"
-            baseFrequency="0.4"
+            baseFrequency="0.3"
             numOctaves="3"
             stitchTiles="stitch"
           />

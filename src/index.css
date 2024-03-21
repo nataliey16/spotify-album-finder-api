@@ -1,5 +1,4 @@
 :root {
-  background: #EDB74D;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -13,18 +12,49 @@ a {
   text-decoration: inherit;
 }
 
-
-
+/* 
+:root {
+  --bg: #F0DBA5;
+  --text: #151515;
+  --yellow: #EDB74D;
+  --red: #EB6666;
+  --green: #6FB18A;
+} */
+:root {
+  --bg: #fff9e9;
+  --text: #151515;
+  --yellow: #E4E18D;
+  --red: #EF694D;
+  --green: #C4D8D1;
+}
 
 body {
-  /* background-color: #EDB74D; */
-  /* background-color: #f8c864; */
+  background-color: var(--bg);
   margin: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
+  min-width: 100px;
   min-height: 100vh;
+
 }
+
+body::before,
+body::after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: '';
+  width: 100%;
+  height: auto;
+  z-index: -1;
+  opacity: 40%;
+}
+
+body::before {
+  background: #8C8C8C;
+  filter: url(#noiseFilter);
+}
+
 
 h1 {
   font-size: 3.2em;
@@ -42,10 +72,93 @@ button {
   transition: border-color 0.25s;
 }
 
+
 button:hover {
   border: 1px solid black;
-  /* background: #ef694d; */
 
+}
+
+.search-button {
+  background-color: #e4e18d;
+}
+
+.search-button {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+.search-button button {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: none;
+
+  font-size: 2rem;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  position: absolute;
+  z-index: 5;
+  transition: 0.3s;
+}
+
+.search-button:hover button {
+  color: black;
+}
+
+.search-button:active button {
+  transform: scale(0.8);
+}
+
+.search-button::before {
+  content: "";
+  display: block;
+
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #ef694d;
+  position: absolute;
+
+  transform: scale(0);
+  transition: 0.5s;
+}
+
+.search-button:hover::before {
+  transform: scale(1);
+}
+
+.search-button::after {
+  content: "";
+  display: block;
+
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: hsl(16, 100%, 50%);
+
+  position: absolute;
+
+  transform: scale(0);
+  transition: 0.3s;
+}
+
+.search-button:active::after {
+  transform: scale(1);
+}
+
+
+
+img {
+  position: relative;
 }
 
 @media (prefers-color-scheme: light) {
