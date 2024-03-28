@@ -13,10 +13,35 @@ import { useState, useEffect } from "react";
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const clientSecret = import.meta.env.VITE_CLIENT_SECRET;
 
+// Star component for rendering stars with random positions
+const Star = ({ top, left, right }) => {
+  return (
+    <img
+      src={imgStar}
+      alt="image of star"
+      width={30}
+      height={50}
+      style={{
+        position: "absolute",
+        top: `${top}px`,
+        left: `${left}px`,
+        right: `${right}px`,
+      }}
+    />
+  );
+};
+
 function App() {
   const [searchInput, setSearchInput] = useState("");
   const [accessToken, setAccessToken] = useState("");
   const [albums, setAlbums] = useState([]); // Will hold an array of information, initialize here
+
+  const starPositions = [
+    { top: 50, left: 100 },
+    { top: 500, left: 500 },
+    { top: 60, left: 1200 },
+    { top: 600, left: 1400 },
+  ];
 
   useEffect(() => {
     let authParams = {
@@ -109,23 +134,23 @@ function App() {
               paddingLeft: "10px",
             }}
           />
-
+          {/* <div className="search-button"> */}
           <Button
             className="search-button"
             style={{
               fontFamily: "Montserrat",
-              // background: "#e4e18d",
               padding: "8px 22px",
               borderRadius: "3px",
               boxShadow: "4px 4px black", // Solid line box shadow
+              textTransform: "uppercase",
             }}
             onClick={search}
           >
             Discover
           </Button>
+          {/* </div> */}
         </InputGroup>
       </Container>
-      <img src={imgStar} alt="image of star" width={30} height={50} />
       <Container>
         <Row
           style={{
@@ -198,7 +223,6 @@ function App() {
           })}
         </Row>
       </Container>
-      <img src={imgStar} alt="image of star" width={40} height={50} />
 
       <svg>
         <filter id="noiseFilter">
@@ -217,6 +241,10 @@ function App() {
           <feBlend in="SourceGraphic" in2="monoNoise" mode="screen" />
         </filter>
       </svg>
+
+      {starPositions.map((position, index) => (
+        <Star key={index} top={position.top} left={position.left} />
+      ))}
     </>
   );
 }
